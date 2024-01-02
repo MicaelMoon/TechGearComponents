@@ -94,11 +94,18 @@ function loadCart(){
         let removeBtn = document.createElement('button')
         removeBtn.textContent = 'Remove from cart'
         removeBtn.onclick = function(){
+            let itemToRemove = costumer.shopingCart.find(p=>p.name === cartItem.name)
 
-            costumer.shopingCart = costumer.shopingCart.filter(p=>p.name !== cartItem.name)
+            if(itemToRemove.cartAmount<2){
+                costumer.shopingCart = costumer.shopingCart.filter(p=>p.name !== cartItem.name)
+
+            }
+            else{
+                itemToRemove.cartAmount -=1
+            }
             localStorage.setItem('shoppingCart', JSON.stringify(costumer.shopingCart))
-            alert(cartItem.name+' was succesfully removed fro cart')
-            window.location.href = 'shopingCart.html';
+            alert(cartItem.name+' was succesfully removed from cart')
+            window.location.href = 'shopingCart.html'
         }
 
         col1.appendChild(productImage)
