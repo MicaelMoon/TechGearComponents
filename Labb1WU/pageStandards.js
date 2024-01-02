@@ -2,7 +2,7 @@ window.onload = addNavLinks;
 
 function addNavLinks(){
     var links = [
-        { text:"Home", href: "home.html"},
+        { text:"Home", href: "index.html"},
         { text: "About us", href:"aboutUs.html"},
         { text:"Offers", href:"offers.html"},
         { text:"Cart", href:"shopingCart.html"}
