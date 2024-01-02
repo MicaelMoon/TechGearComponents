@@ -53,8 +53,12 @@ function loadCart(){
         let col2 = document.createElement('div')
         col2.className = "col"
 
+        let col3 = document.createElement('div')
+        col3.className = "col"
+
         row.appendChild(col1)
         row.appendChild(col2)
+        row.appendChild(col3)
 
         //Image
         let productImage = document.createElement('img')
@@ -87,12 +91,22 @@ function loadCart(){
         combinedPrice.className = 'allText'
         combinedPrice.textContent = 'Stack price: $'+ cartItem.stackPrice.toFixed(2)
 
+        let removeBtn = document.createElement('button')
+        removeBtn.textContent = 'Remove from cart'
+        removeBtn.onclick = function(){
+
+            costumer.shopingCart = costumer.shopingCart.filter(p=>p.name !== cartItem.name)
+            localStorage.setItem('shoppingCart', JSON.stringify(costumer.shopingCart))
+            alert(cartItem.name+' was succesfully removed fro cart')
+            window.location.href = 'shopingCart.html';
+        }
 
         col1.appendChild(productImage)
         col2.appendChild(productName)
         col2.appendChild(amount)
         col2.appendChild(priceAPiece)
         col2.appendChild(combinedPrice)
+        col3.appendChild(removeBtn)
 
         let line = document.createElement('hr')
         line.className = "lineBreak "
